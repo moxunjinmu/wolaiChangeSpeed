@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试vue3</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+  <div id="app" @onclick="testaction">
+    {{message}}
+  </div>
+  <div class="bilibili-player-video-btn bilibili-player-video-btn-speed">
+    <button class="bilibili-player-video-btn-speed-name" aria-label="倍速">倍速</button>
+    <div class="bilibili-player-video-btn-speed-menu-wrap">
+        <ul class="bilibili-player-video-btn-speed-menu">
+            <li class="bilibili-player-video-btn-speed-menu-list " data-value="2">2.0x</li><li class="bilibili-player-video-btn-speed-menu-list " data-value="1.5">1.5x</li><li class="bilibili-player-video-btn-speed-menu-list " data-value="1.25">1.25x</li><li class="bilibili-player-video-btn-speed-menu-list bilibili-player-active" data-value="1">1.0x</li><li class="bilibili-player-video-btn-speed-menu-list " data-value="0.75">0.75x</li><li class="bilibili-player-video-btn-speed-menu-list " data-value="0.5">0.5x</li>
+        </ul>
+    </div>
+</div>
+</body>
+<script src="js/index.js"></script>
+</html>

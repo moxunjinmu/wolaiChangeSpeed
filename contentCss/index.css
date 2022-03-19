@@ -1,0 +1,93 @@
+ul li div q i a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+li{
+  list-style: none outside none;
+}
+
+#change-speed{
+  position: relative;
+  width: 50px;
+  height: 100%;
+  flex: 1;
+  order: 3;
+  cursor: pointer;
+  background: 0 0;
+  text-align: center;
+  color: hsla(0,0%,100%,.8);
+  fill: hsla(0,0%,100%,.9);
+  font-size: 0;
+  z-index: 2;
+  align-items: flex-start;
+}
+
+.player-video-btn-speed-menu-list {
+  position: relative;
+  height: 36px;
+  line-height: 36px;
+  cursor: pointer;
+}
+
+.moxun-player-active {
+  color: #00a1d6;
+}
+
+.moxun-player-video-btn-speed-name {
+  font-size: 16px!important;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  color: inherit;
+  text-align: inherit;
+  font: inherit;
+  line-height: inherit;
+  height: 100%;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.bilibili-player-video-btn-speed-menu-wrap{
+  position: absolute;
+  bottom: 50px;
+  left: 15px;
+  width: 70px;
+  font-size: 14px;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  background: rgba(21,21,21,.5);
+  border-radius: 2px;
+  opacity: 1;
+  visibility: visible;
+}
+
+ul.moxun-player-video-btn-speed-menu{
+  user-select: none;
+  margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+li.bilibili-player-video-btn-speed-menu-list{
+  position: relative;
+  height: 36px;
+  line-height: 36px;
+  cursor: pointer;
+}
+
+li.bilibili-player-video-btn-speed-menu-list:hover{
+  background: rgba(0,0,0,0.2);
+}
