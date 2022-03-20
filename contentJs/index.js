@@ -1,24 +1,24 @@
 
 var registeredTimes = 0
 var times;
-
+var speedLists = ['0.5', '0.8', '1', '1.25', '1.5', '2.0']
+var $changeDiv = $('<div id="change-speed"></div>')
+var $changeButton = $('<button class="moxun-player-video-btn-speed-name" aria-label="倍速">倍速</button>')
+var $speedMenuWrap = $('<div class="bilibili-player-video-btn-speed-menu-wrap"></div>')
+var $ul = $(`<ul class="moxun-player-video-btn-speed-menu"></ul>`)
+var speedItem;
+console.log("chrome",chrome);
 function createChange(){
   registeredTimes++
   clearTimeout(times);
-  var speedItem;
   let $wolaiPlayerVideo = $('video.vjs-tech')
-  const $changeDiv = $('<div id="change-speed"></div>')
-  const $changeButton = $('<button class="moxun-player-video-btn-speed-name" aria-label="倍速">倍速</button>')
-  const $speedMenuWrap = $('<div class="bilibili-player-video-btn-speed-menu-wrap"></div>')
-  const $ul = $(`<ul class="moxun-player-video-btn-speed-menu"></ul>`)
-  const speedLists = ['0.5', '0.8', '1', '1.25', '1.5', '2.0']
-  const $vjsControlBar = $('div.vjs-control-bar');
-  const $lastbutton = $('div.vjs-control-bar button:last-child')
+  // const $vjsControlBar = $('div.vjs-control-bar');
+  // const $lastbutton = $('div.vjs-control-bar button:last-child')
 
-  if(!$vjsControlBar.length && registeredTimes <= 6) {
+  if(!$wolaiPlayerVideo.length && registeredTimes <= 3) {
     return  times = setTimeout(() => {
       createChange()
-    }, 2000);
+    }, 3000);
   }
 
   for (let i = 0; i < speedLists.length; i++) {
@@ -28,42 +28,25 @@ function createChange(){
 
 
   $speedMenuWrap.append($ul)
-  $changeDiv.append($changeButton)
   $changeDiv.append($speedMenuWrap)
-  $vjsControlBar.append($changeDiv)
-  $changeDiv.insertBefore($lastbutton)
-
-
+  $changeDiv.append($changeButton)
+  $('body').append($changeDiv)
+  // $changeDiv.insertBefore($lastbutton)
+  
+  
   var allLi = $('ul.moxun-player-video-btn-speed-menu li')
   allLi.click(function(){
-    var _this = $(this);
-    var index = _this.index();
-    console.log("index",index);
-    _this.addClass('moxun-player-active').siblings().removeClass('moxun-player-active');
-    console.log("$wolaiPlayerVideo",$wolaiPlayerVideo[0]);
-    console.log("$wolaiPlayerVideo playbackRate",$wolaiPlayerVideo[0].playbackRate);
+    var index = $(this).index();
+    $wolaiPlayerVideo = $('video.vjs-tech')
+    $(this).addClass('moxun-player-active').siblings().removeClass('moxun-player-active');
     $wolaiPlayerVideo[0].playbackRate = speedLists[index]
-    console.log("$wolaiPlayerVideo===== playbackRate",$wolaiPlayerVideo[0].playbackRate);
   })
-
 
 }
 
-// createChange()
 $(function(){
   createChange()
 });
-
-
-{/* <video id="video" width="180" height="314" autobuffer controls src="./sing-song.mp4" type="video/mp4"></video>
-<p>选择播放速率：<select id="selRate">
-    <option value="0.5">0.5</option>
-    <option value="1" selected>1.0</option>
-    <option value="1.25">1.25</option>
-    <option value="1.5">1.5</option>
-    <option value="2">2.0</option>
-</select></p>
-<p><button id="btnPlay">视频播放</button></p> */}
 
 
 $(function(){
@@ -85,4 +68,3 @@ $(function(){
     clearTimeout(timeId);
   });
 });
-

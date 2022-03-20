@@ -28,5 +28,7 @@
         "run_at": "document_idle"
     }
 ],
-  "permissions": ["storage"]
+  "permissions": ["storage", "history",
+    "webRequest", "declarativeNetRequest", "declarativeNetRequestFeedback", "declarativeNetRequestWithHostAccess", "webNavigation"],
+  "host_permissions": ["https://*.wolai.com/*"]
 }
