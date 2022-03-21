@@ -7,7 +7,7 @@ var $changeButton = $('<button class="moxun-player-video-btn-speed-name" aria-la
 var $speedMenuWrap = $('<div class="bilibili-player-video-btn-speed-menu-wrap"></div>')
 var $ul = $(`<ul class="moxun-player-video-btn-speed-menu"></ul>`)
 var speedItem;
-console.log("chrome",chrome);
+
 function createChange(){
   registeredTimes++
   clearTimeout(times);
@@ -46,25 +46,36 @@ function createChange(){
 
 $(function(){
   createChange()
+  changeVideo()
 });
 
-
-$(function(){
-  var ali = $('.tabTitle ul li');
-  var aDiv = $('.tabContent div');
-  var timeId = null;
-  ali.mouseover(function(){
-    var _this = $(this);
-    //setTimeout();的作用是延迟某一段代码的执行
-    timeId = setTimeout(function(){
-      //$(this)方法属于哪个元素，$(this)就是指哪个元素
-      _this.addClass('current').siblings().removeClass('current');
-      //如果想用一组元素控制另一组元素的显示或者隐藏，需要用到索引
-      var index = _this.index();
-      aDiv.eq(index).show().siblings().hide();
-    },300);
-  }).mouseout(function(){
-    //clearTimeout的作用是清除定时器
-    clearTimeout(timeId);
-  });
-});
+function changeVideo(){
+  let vol = 0.1;
+  let cahngeTime = 5; //单位秒
+  document.addEventListener('keyup', function(event){
+    event.preventDefault();
+    var e = event || window.event || arguments.callee.caller.arguments[0];
+    var videoElement = document.querySelector('.vjs-tech')
+    if(!e) return false;
+    switch (e.keyCode) {
+      case 38:
+        videoElement.volume !== 1 ? videoElement.volume += vol : 1;
+        break;
+      case 40:
+        videoElement.volume !== 0 ? videoElement.volume -= vol : 1;
+        break;
+      case 37:
+        videoElement.currentTime !== 0 ? videoElement.currentTime -= cahngeTime : 1;
+        break;
+      case 39:
+        videoElement.volume !== videoElement.duration ? videoElement.currentTime += cahngeTime : 1;
+        break;
+      case 32:
+        videoElement.paused === true ? videoElement.play() : videoElement.pause();
+        break;
+      default:
+        break;
+    }
+    return false;
+  })
+}
